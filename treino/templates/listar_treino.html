@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Data</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for treino in treinos %}
+            <tr>
+                <td>{{ treino.nome }}</td>
+                <td>{{ treino.descricao }}</td>
+                <td>{{ treino.data }}</td>
+                <td>
+                    <a href="{% url 'treino:editar' treino.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'treino:excluir' treino.id %}" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
